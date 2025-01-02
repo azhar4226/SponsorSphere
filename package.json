@@ -1,0 +1,8 @@
+{
+  "devDependencies": {
+    "tailwindcss": "^3.4.4"
+  },
+  "scripts": {
+    "tailwind": "npx tailwindcss -i ./Adfluence/static/src/input.css -o ./Adfluence/static/css/main.css --watch"
+  }
+}

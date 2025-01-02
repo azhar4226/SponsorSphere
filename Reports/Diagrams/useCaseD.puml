@@ -1,0 +1,40 @@
+@startuml SponsorSphereVerticalUseCaseDiagram
+left to right direction
+
+actor "Admin" as admin
+actor "Sponsor" as sponsor
+actor "Influencer" as influencer
+
+rectangle "SponsorSphere System" {
+    usecase "Manage Users and Campaigns" as UC1
+    usecase "View Statistics" as UC2
+    usecase "Flag Inappropriate Campaigns" as UC3
+    usecase "Create Campaign" as UC4
+    usecase "Update Campaign" as UC5
+    usecase "Delete Campaign" as UC6
+    usecase "Send Ad Request" as UC7
+    usecase "Receive Ad Request" as UC8
+    usecase "Accept/Reject Ad Request" as UC9
+    usecase "Search Influencers" as UC10
+    usecase "Search Campaigns" as UC11
+    usecase "Update Profile" as UC12
+}
+
+admin --> UC1
+admin --> UC2
+admin --> UC3
+
+sponsor --> UC4
+sponsor --> UC5
+sponsor --> UC6
+sponsor --> UC7
+sponsor --> UC9
+sponsor --> UC10
+
+influencer --> UC7
+influencer --> UC8
+influencer --> UC9
+influencer --> UC11
+influencer --> UC12
+
+@enduml

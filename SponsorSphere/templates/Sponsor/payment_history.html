@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      a {
+        text-decoration: none;
+        color: inherit; /* Inherits the color from its parent */
+      }
+
+      a:visited {
+        color: inherit; /* Ensures visited links have the same color */
+      }
+
+      a:hover {
+        color: inherit;
+      }
+
+      a:active {
+        color: inherit;
+      }
+
+      a:focus {
+        outline: none; /* Remove the default outline on focus */
+      }
+
+      html,
+      body {
+        width: 100vw;
+        height: 100%;
+        font-family: "Arame";
+        overflow: hidden;
+      }
+      .table-wrapper {
+        padding-top: 10px;
+        width: 100vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      .table-wrapper h1 {
+        text-align: center;
+        padding-bottom: 20px;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        border-spacing: 8px;
+        background-color: #ffffff;
+        border-radius: 12px;
+        font-family: "Arame";
+      }
+      td {
+        border-bottom: 1px solid #000;
+      }
+
+      th,
+      td {
+        padding: 12px; /* Add padding to cells for better spacing */
+        text-align: center; /* Align text to the left within cells */
+      }
+
+      th {
+        color: #000000;
+        letter-spacing: -0.4px;
+        border-bottom: 2px solid #000;
+      }
+      button {
+        background-color: transparent;
+        border: none;
+        font-family: Arame;
+      }
+      .wd-sm {
+        width: 40px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="table-wrapper">
+      <button onclick="window.print()"><h1>Transaction History</h1></button>
+      <table>
+        <thead>
+          <tr>
+            <th>Sno.</th>
+            <th>Influencer Name</th>
+            <th>Platform</th>
+            <th>Campaign</th>
+            <th>Amount (in Rs.)</th>
+            <th>Date</th>
+            <th>Request Type</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {%for transaction in transactions%}
+          <tr>
+            <td>{{loop.index}}</td>
+            <td>{{transaction.influencer_name}}</td>
+            <td>{{transaction.influencer_platform}}</td>
+            <td>{{transaction.campaign_name}}</td>
+            <td>{{transaction.transaction.amount}}</td>
+            <td>{{transaction.transaction.date}}</td>
+            <td>{{transaction.transaction.request_type}}</td>
+          </tr>
+          {%endfor%}
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>

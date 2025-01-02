@@ -1,0 +1,157 @@
+{% extends "base.html" %} {% block head %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='src/admin_css/dashboard.css') }}"
+/>
+{% endblock %} {% block content %}
+<div class="container">
+  <nav>
+    <div class="nav-1">
+      <a href="{{ url_for('admin.dashboard') }}" class="logo view">
+        AD <br />
+        FL
+      </a>
+      <a href="{{ url_for('views.logout') }}" class="view">logout</a>
+    </div>
+    <div class="nav-2">
+      <p class="menu-button">the</p>
+      <p class="x">X</p>
+      <p class="menu-button">dashboard</p>
+    </div>
+    <div class="nav-3">
+      <a href="{{ url_for('admin.view_influencers') }}">
+        View <br />
+        Influencers
+      </a>
+    </div>
+    <div class="nav-3">
+      <a href="{{ url_for('admin.view_campaigns') }}">
+        View <br />
+        Campaigns
+      </a>
+    </div>
+  </nav>
+
+  <div class="content-wrapper">
+    <div class="row-1 row">
+      <div class="col-1">
+        <div class="stats-row">
+          <div class="stats">
+            <h1 class="stats-heading">Total Users</h1>
+            <h1 class="stats-data">{{ user_count }}</h1>
+          </div>
+          <div class="stats">
+            <h1 class="stats-heading">Total Influencers</h1>
+            <h1 class="stats-data">{{ influencer_count }}</h1>
+          </div>
+          <div class="stats">
+            <h1 class="stats-heading">Total Sponsors</h1>
+            <h1 class="stats-data">{{ sponsor_count }}</h1>
+          </div>
+          <div class="stats">
+            <h1 class="stats-heading">Total Campaigns</h1>
+            <h1 class="stats-data">{{ campaign_count }}</h1>
+          </div>
+        </div>
+        <canvas id="userChart" width="950px" height="400px"></canvas>
+      </div>
+
+      <div class="col-2">
+        <h1 class="mt-2 ml-4 mb-2">Campaigns by status</h1>
+        <canvas id="campaign_by_status" width="400px" height="220px"></canvas>
+        <br />
+        <div class="links">
+          <a class="link" href="{{ url_for('admin.influencer_stats') }}"
+            ><span>influencer stats</span
+            ><ion-icon name="arrow-forward-sharp"></ion-icon
+          ></a>
+          <a class="link" href="{{ url_for('admin.sponsor_stats') }}"
+            ><span>sponsor stats</span
+            ><ion-icon name="arrow-forward-sharp"></ion-icon
+          ></a>
+          <a class="link" href="{{ url_for('admin.campaign_stats') }}">
+            <span> campaign stats</span
+            ><ion-icon name="arrow-forward-sharp"></ion-icon
+          ></a>
+          <a class="link" href="{{ url_for('admin.transaction_stats') }}">
+            <span>transaction stats</span
+            ><ion-icon name="arrow-forward-sharp"></ion-icon>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const ctx = document.getElementById("userChart").getContext("2d");
+  const labels = [
+      "Total Users", "Sponsors", "Influencers", "Campaigns", "Transactions", "Ad Requests"
+  ]
+  var userChart = new Chart(ctx, {
+      type: "bar",
+      data: {
+          labels: labels,
+          datasets: [{
+              label: "Total Number ",
+            data:[{{user_count}}, {{sponsor_count}}, {{influencer_count}}, {{ campaign_count }}, {{ transaction_count }}, {{ ad_request_count }}],
+            backgroundColor: [ 'rgba(75, 192, 192, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)',
+                'rgba(255, 99, 132, 0.2)'],
+            borderColor: [ 'rgba(75, 192, 192, 1)',
+      'rgba(54, 162, 235, 1)',
+      'rgba(255, 206, 86, 1)',
+      'rgba(153, 102, 255, 1)',
+      'rgba(255, 159, 64, 1)',
+      'rgba(255, 99, 132, 1)'],
+            borderWidth: 1
+          }]
+
+      },
+  options:{
+          responsive:false,
+              maintainAspectRatio: false,
+      scales: {
+          y: {
+              beginAtZero: true
+          }
+      }
+  }
+  })
+
+  const campaign_by_status_ctx=document.getElementById("campaign_by_status").getContext("2d");
+  var campaign_by_status = new Chart(campaign_by_status_ctx, {
+    type:"pie",
+    data:{
+      labels:{{labels_campaign_by_status | safe}},
+      datasets:[{
+        data:{{values_campaign_by_status | safe}},
+        backgroundColor: [
+          'rgba(255, 99, 132, 0.2)',
+          'rgba(54, 162, 235, 0.2)',
+          'rgba(255, 206, 86, 0.2)',
+          'rgba(75, 192, 192, 0.2)'],
+        borderColor: [
+          'rgba(255, 99, 132, 1)',
+          'rgba(54, 162, 235, 1)',
+          'rgba(255, 206, 86, 1)',
+          'rgba(75, 192, 192, 1)'],
+          hoverOffset: 16,
+        borderWidth: 1}]
+    },
+    options:{
+      responsive:false,
+      maintainAspectRatio: false,
+      scales: {
+          y: {
+              beginAtZero: true
+          }
+      }
+    }
+  })
+</script>
+{% endblock %}

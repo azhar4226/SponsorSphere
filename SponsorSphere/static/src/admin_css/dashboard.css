@@ -1,0 +1,188 @@
+:root {
+  --black: #000;
+  --white: #fff;
+}
+
+@font-face {
+  font-family: up;
+  src: url(../../upheavtt.otf);
+}
+
+@font-face {
+  font-family: sk;
+  src: url(../../SKCuber-Expanded.ttf);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  background-color: var(--black);
+  font-family: "Arame";
+  overflow: hidden;
+}
+
+.container {
+  width: 100%;
+  height: 100vh;
+  max-width: 3840px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25em;
+}
+
+nav {
+  width: 100%;
+  flex: 1;
+  display: flex;
+  gap: 0.25em;
+  padding: 0.25em 0 0 0;
+  background-color: var(--black);
+}
+
+nav > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1em 2em;
+  background: var(--white);
+  color: var(--black);
+  border-radius: 10px;
+}
+
+.nav-1 {
+  flex: 3;
+  transition: all 0.2s ease-out;
+}
+
+.nav-1:hover {
+  background: #b20811;
+  color: #fff;
+  font-weight: bold;
+  flex: 3.2;
+}
+
+.nav-2 {
+  flex: 3.09;
+}
+
+.nav-3,
+.nav-4 {
+  flex: 1;
+  transition: all 0.2s ease-out;
+}
+
+.nav-3:hover {
+  background: #b20811;
+  color: #fff;
+  font-weight: bold;
+  flex: 1.2;
+}
+
+.content-wrapper {
+  flex: 12;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  padding: 0 0 0.5em 0;
+  background-color: var(--black);
+  gap: 0.25em;
+  overflow: hidden;
+}
+
+.row-1 {
+  flex: 9;
+  display: flex;
+  gap: 0.25em;
+}
+
+.stats-row {
+  display: flex;
+  gap: 1em;
+  justify-content: space-evenly;
+  align-items: center;
+  font-family: "Neue Montreal";
+  font-weight: 500;
+  transition: all 0.2s ease-out;
+  margin-bottom: 40px;
+}
+
+.stats {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25em;
+  padding: 1em;
+  border-radius: 10px;
+  transition: all 0.2s ease-out;
+}
+
+.stats:hover {
+  background-color: #b20811;
+  color: white;
+}
+
+.stats-heading {
+  font-size: 24px;
+}
+
+.stats-data {
+  font-size: 32px;
+}
+
+.col-1 {
+  flex: 9.4;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.col-2 {
+  flex: 4;
+  background-color: #fff;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25em;
+  justify-content: space-between;
+}
+
+.view:hover {
+  color: blue;
+}
+.links {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.6em;
+}
+
+.link {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1em 1.2em 1em 1.4em;
+  font-family: "Neue Montreal";
+  font-weight: 500;
+  transition: all 0.2s ease-out;
+}
+
+.link:last-child {
+  border-radius: 0 0 0 10px;
+}
+
+.link:hover {
+  background-color: #b20811;
+  color: white;
+  padding: 1em 0.4em 1em 1em;
+}

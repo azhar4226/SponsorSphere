@@ -1,0 +1,57 @@
+@startuml
+
+|Influencer|
+start
+:Log in to the system;
+:Access Influencer Dashboard;
+
+fork
+    :Search for campaigns;
+    if (Apply filters?) then (yes)
+        :Filter by category and budget;
+    else (no)
+        :View all campaigns;
+    endif
+
+
+fork again
+    :View received ad requests;
+    if (Accept or Reject Ad Request?) then (accept)
+        :Accept Ad Request;
+        :Notify Sponsor;
+    else (reject)
+        :Reject Ad Request;
+        :Notify Sponsor;
+    endif
+
+
+fork again
+    :Send new Ad Request to Sponsor;
+    if (Negotiate terms?) then (yes)
+        :Modify Ad Request;
+        :Resend Ad Request;
+    endif
+
+
+fork again
+    :Update profile information;
+    if (Save changes?) then (yes)
+        :Save Profile Changes;
+    else (no)
+        :Discard Changes;
+    endif
+
+
+fork again
+    :Delete existing Ad Request;
+    if (Confirm deletion?) then (yes)
+        :Delete Ad Request;
+    else (no)
+        :Cancel deletion;
+    endif
+end fork
+
+
+:Log out of the system;
+stop
+@enduml

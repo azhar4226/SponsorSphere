@@ -1,0 +1,91 @@
+{% extends "base.html" %} {% block head %}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='src/sponsor_css/view_campaigns.css') }}"
+/>
+{% endblock %} {% block content %}
+<div class="container">
+  <nav>
+    <div class="nav-1">
+      <a href="{{ url_for('sponsor.dashboard') }}" class="logo view">
+        AD <br />
+        FL
+      </a>
+      <a href="{{ url_for('views.logout') }}" class="view">logout</a>
+    </div>
+    <div class="nav-2">
+      <p class="menu-button view">the</p>
+      <p class="x">v</p>
+      <p class="menu-button view">dashboard</p>
+    </div>
+    <div class="nav-3">
+      {% if user.flagged == False %}
+      <a href="{{ url_for('sponsor.createCampaign') }}" class="view">create+</a>
+
+      {% endif %}
+      <a
+        href="{{ url_for('sponsor.payment_history',user_id=current_user.id) }}"
+        class="view"
+      >
+        history
+      </a>
+    </div>
+  </nav>
+
+  <div class="content-wrapper">
+    <div class="header-wrapper">
+      <div class="header-1">
+        <h1>Active campaigns</h1>
+      </div>
+      <div class="header-2">
+        <div class="marquee">
+          <span>
+            <a href="{{ url_for('sponsor.export_csv')}}">
+              Export Transactions as CSV &nbsp; Export Transactions as CSV
+              &nbsp; Export Transactions as CSV &nbsp; Export Transactions as
+              CSV &nbsp; Export Transactions as CSV &nbsp; Export Transactions
+              as CSV &nbsp; Export Transactions as CSV &nbsp; Export
+              Transactions as CSV &nbsp; Export Transactions as CSV &nbsp;
+            </a>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="table-wrapper">
+      <table class="first-table">
+        <thead>
+          <tr>
+            <th>Campaign Name</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Budget</th>
+            <th>Visibility</th>
+            <th>Niche</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for campaign in campaigns %}
+          <tr>
+            <td>
+              <a
+                href="{{ url_for('sponsor.view_completed_campaign', campaign_id=campaign.id) }}"
+                class="view"
+                >{{ campaign.name }}</a
+              >
+            </td>
+            <td>{{ campaign.start_date.strftime('%Y-%m-%d') }}</td>
+            <td>{{ campaign.end_date.strftime('%Y-%m-%d') }}</td>
+            <td>Rs. {{ campaign.budget }}</td>
+            <td>{{ campaign.visibility }}</td>
+            <td>{{ campaign.niche }}</td>
+            <td>{{ campaign.status }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  {% endblock %}
+</div>

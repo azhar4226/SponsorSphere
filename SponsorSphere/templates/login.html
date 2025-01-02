@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='src/login.css') }}" />
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% endblock %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="logo-area">
+        <img class="logo" src="{{ url_for('static', filename='Sphere.png') }}" alt="Sphere" />
+    </div>
+    <div class="login-area">
+        <div class="welcome">
+            <h3>WELCOME BACK</h3>
+            <h5>Log In</h5>
+        </div>
+        <form method="POST" class="login-form">
+            <div class="form-field-wrapper">
+                <label class="label" for="role">ROLE</label>
+                <select id="role" name="role" class="input-field">
+                    <option value="Admin">Admin</option>
+                    <option value="Sponsor">Sponsor</option>
+                    <option value="Influencer">Influencer</option>
+                </select>
+            </div>
+            
+            <div class="form-field-wrapper">
+                <label class="label" for="email">EMAIL</label>
+                <input type="email" name="email" id="email" required placeholder="you@example.com" class="input-field" />
+            </div>
+            
+            <div class="form-field-wrapper">
+                <label class="label" for="password">PASSWORD</label>
+                <input type="password" name="password" id="password" required placeholder="Enter your password" class="input-field" />
+            </div>
+            
+            <div class="signup">
+                <span>No account?</span>
+                <a href="/sign-up">Sign Up</a>
+            </div>
+            
+            <button type="submit" class="login-btn">
+                Login <ion-icon name="arrow-forward-sharp"></ion-icon>
+            </button>
+        </form>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,94 @@
+@startuml SponsorSphereClassDiagram
+
+class User {
+    + userId: int
+    + username: String
+    + password: String
+    + userType: UserType
+    + login()
+    + logout()
+}
+
+class Admin {
+    + adminId: int
+    + monitorUsers()
+    + flagInappropriate()
+    + viewStatistics()
+}
+
+class Sponsor {
+    + companyName: String
+    + industry: String
+    + budget: float
+    + createCampaign()
+    + searchInfluencers()
+    + acceptAdRequest()
+    + rejectAdRequest()
+    + trackCampaigns()
+}
+
+class Influencer {
+    + name: String
+    + category: String
+    + niche: String
+    + reach: float
+    + acceptAdRequest()
+    + rejectAdRequest()
+    + negotiateTerms()
+    + updateProfile()
+    + searchCampaigns()
+    + sendAdRequest()
+}
+
+class Campaign {
+    + campaignId: int
+    + name: String
+    + description: String
+    + startDate: Date
+    + endDate: Date
+    + budget: float
+    + visibility: VisibilityType
+    + createAdRequest()
+    + updateCampaign()
+    + deleteCampaign()
+}
+
+class AdRequest {
+    + adRequestId: int
+    + campaignId: int
+    + influencerId: int
+    + messages: String
+    + requirements: String
+    + paymentAmount: float
+    + status: AdRequestStatus
+    + createRequest()
+    + editRequest()
+    + deleteRequest()
+}
+
+enum UserType {
+    Admin
+    Sponsor
+    Influencer
+}
+
+enum VisibilityType {
+    Public
+    Private
+}
+
+enum AdRequestStatus {
+    Pending
+    Accepted
+    Rejected
+}
+
+User <|-- Admin
+User <|-- Sponsor
+User <|-- Influencer
+Campaign --> Sponsor : "created by"
+AdRequest --> Campaign : "related to"
+AdRequest --> Influencer : "sent to/received by"
+AdRequest --> Sponsor : "sent by/received by"
+
+@enduml

@@ -1,0 +1,270 @@
+@font-face {
+  font-family: up;
+  src: url(../../upheavtt.otf);
+}
+@font-face {
+  font-family: sk;
+  src: url(../../SKCuber-Expanded.ttf);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  font-family: "Arame";
+  overflow: hidden;
+}
+
+p {
+  text-transform: uppercase;
+}
+.x {
+  font-family: sk;
+  margin-top: -10px;
+  font-size: 14px;
+}
+
+.container {
+  width: 100%;
+  height: 100vh;
+  max-width: 3840px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25em;
+}
+
+
+nav {
+  width: 100%;
+  flex: 1;
+  display: flex;
+  gap: 0.25em;
+  padding: 0.25em 0 0 0;
+  background-color: #000;
+}
+nav > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1em 2em;
+  background: #fff;
+  color: #000;
+  border-radius: 10px;
+}
+
+.nav-1 {
+  flex: 3;
+}
+
+.nav-2 {
+  flex: 2;
+}
+.view {
+  cursor: pointer;
+  transition: all 0.2s ease-out;
+  font-family: "Arame";
+}
+.view:hover {
+  color: blue;
+}
+
+.nav-3 {
+  flex: 3;
+}
+
+.content-wrapper {
+  flex: 12;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 0 0 0.5em 0;
+  background-color: #000;
+  gap: 0.25em;
+  overflow: hidden;
+}
+
+.header-wrapper {
+  display: flex;
+  gap: 0.25em;
+}
+.header {
+  background-color: #fff;
+  border-radius: 10px;
+}
+.header h1 {
+  font-family: up;
+  font-size: 50px;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+.header-1 {
+  flex: 8;
+  background-color: #fff;
+  color: #000;
+  border-radius: 10px;
+  text-align: left;
+  padding: 0.2em 2em;
+}
+
+.header-1 h1 {
+  font-family: up;
+  font-size: 50px;
+  letter-spacing: 1px;
+}
+
+.header-2 {
+  flex: 4;
+  position: relative;
+  background-color: #fff;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  transition: all 0.2s ease-out;
+}
+.header-2:hover {
+  background-color: #b20811;
+}
+
+.marquee {
+  width: 100%;
+  position: absolute;
+  padding: 1em 0;
+  overflow: hidden;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  margin: 0 auto;
+  bottom: 2px;
+}
+
+.marquee span {
+  font-family: up;
+  font-weight: normal;
+  letter-spacing: 1px;
+  font-size: 30px;
+  transform: translateX(12px);
+  transition: transform 0.5s ease-in-out;
+  cursor: pointer;
+}
+.marquee a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.marquee:hover span {
+  animation: marquee-animation 20s linear infinite;
+  color: #fff;
+}
+
+@keyframes marquee-animation {
+  0% {
+    transform: translateX(12px);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.table-wrapper {
+  width: 100%;
+  height: 100vh;
+  overflow-x: auto;
+  overflow-y: auto;
+  display: flex;
+  justify-content: center;
+  border-radius: 10px;
+  background: #fff;
+  padding: 3em 2em;
+}
+
+.first-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  height: fit-content;
+}
+
+.first-table th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background-color: #fff;
+  padding: 0.5em 0.5em;
+  border-bottom: 2px solid #000;
+  text-align: left;
+  font-size: 16px;
+}
+.first-table td {
+  padding: 0.5em 0.5em;
+  border-bottom: 1px solid #000;
+  text-align: left;
+  vertical-align: top; /* Ensures text starts from the top of the cell */
+  word-wrap: break-word; /* Breaks long words onto the next line */
+  white-space: normal;
+  font-size: 16px;
+}
+
+tr:hover {
+  background-color: #f8f9fa;
+}
+.link {
+  width: 120px;
+}
+.danger {
+  cursor: pointer;
+  transition: all 0.2s ease-out;
+  font-family: "Arame";
+}
+.danger:hover {
+  color: red;
+}
+.first-table td.status-pending::before,
+.first-table td.status-accepted::before,
+.first-table td.status-rejected::before {
+  content: "";
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.first-table td.status-pending::before {
+  background-color: #ffcc00;
+}
+
+.first-table td.status-accepted::before {
+  background-color: #4caf50;
+}
+
+.first-table td.status-rejected::before {
+  background-color: #f44336;
+}
+
+.status-pending {
+  color: #ffcc00;
+
+  font-size: 16px;
+}
+
+.status-accepted {
+  color: #4caf50;
+
+  font-size: 16px;
+}
+
+.status-rejected {
+  color: #f44336;
+  font-size: 16px;
+}

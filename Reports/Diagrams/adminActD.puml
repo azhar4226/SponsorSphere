@@ -1,0 +1,48 @@
+@startuml
+|Admin|
+start
+:Log in to the system;
+:Access Admin Dashboard;
+
+fork
+    :View statistics (users, campaigns, ad requests);
+fork again
+    :Monitor active campaigns;
+end fork
+
+repeat
+    :Select Action;
+
+    fork
+        if (Manage Campaigns?) then (yes)
+            if (Flag or Delete Campaign?) then (flag)
+                :Flag Campaign;
+                :Review flagged content;
+            else (delete)
+                :Delete Campaign;
+            endif
+        endif
+    fork again
+        if (Manage Influencers?) then (yes)
+            if (Flag or Delete Influencer?) then (flag)
+                :Flag Influencer;
+            else (delete)
+                :Delete Influencer;
+            endif
+        endif
+    fork again
+        if (Manage Sponsors?) then (yes)
+            if (Flag or Delete Sponsor?) then (flag)
+                :Flag Sponsor;
+            else (delete)
+                :Delete Sponsor;
+            endif
+        endif
+    end fork
+
+    :More actions available?;
+repeat while (yes)
+
+:Log out of the system;
+stop
+@enduml

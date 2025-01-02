@@ -1,0 +1,147 @@
+@startuml classes_main
+set namespaceSeparator none
+class "AdRequest" as MAD-1-Project-IESCP-main.Adfluence.models.AdRequest {
+  campaign_id
+  completed
+  completion_confirmed
+  id
+  influencer_id
+  messages
+  negotiations
+  payment_amount
+  payment_done
+  rating_done
+  requirements
+  status
+}
+class "AdRequestAPI" as MAD-1-Project-IESCP-main.Adfluence.api.AdRequestAPI {
+  delete(id)
+  get(id)
+  post()
+  put(id)
+}
+class "Bookmark" as MAD-1-Project-IESCP-main.Adfluence.models.Bookmark {
+  campaign_id
+  id
+  influencer_id
+}
+class "Campaign" as MAD-1-Project-IESCP-main.Adfluence.models.Campaign {
+  ad_requests
+  budget
+  campaign_requests
+  description
+  end_date
+  flagged
+  goals
+  id
+  name
+  niche
+  start_date
+  status
+  user_id
+  visibility
+}
+class "CampaignAPI" as MAD-1-Project-IESCP-main.Adfluence.api.CampaignAPI {
+  delete(id)
+  get(id)
+  post()
+  put(id)
+}
+class "CampaignRequestAPI" as MAD-1-Project-IESCP-main.Adfluence.api.CampaignRequestAPI {
+  delete(id)
+  get(id)
+  post()
+  put(id)
+}
+class "Influencer" as MAD-1-Project-IESCP-main.Adfluence.models.Influencer {
+  adrequests
+  bank_account_balance
+  bookmarks
+  campaignrequests
+  email
+  flagged
+  id
+  name
+  niche
+  platform
+  profile_picture
+  ratings
+  reach
+  transactions
+  user_id
+}
+class "InfluencerAPI" as MAD-1-Project-IESCP-main.Adfluence.api.InfluencerAPI {
+  delete(id)
+  get(id)
+  post()
+  put(id)
+}
+class "Negotiation" as MAD-1-Project-IESCP-main.Adfluence.models.Negotiation {
+  ad_request_id
+  campaign_id
+  created_at
+  id
+  offer_amount
+  receiver_id
+  sender_id
+  status
+}
+class "Rating" as MAD-1-Project-IESCP-main.Adfluence.models.Rating {
+  date
+  id
+  ratee_id
+  rater_id
+  rating
+  review
+  transaction_id
+}
+class "RatingAPI" as MAD-1-Project-IESCP-main.Adfluence.api.RatingAPI {
+  delete(id)
+  get(id)
+  post()
+  put(id)
+}
+class "Transaction" as MAD-1-Project-IESCP-main.Adfluence.models.Transaction {
+  ad_request_id
+  amount
+  date
+  id
+  influencer_id
+  ratings
+  request_type
+  status
+  user_id
+}
+class "User" as MAD-1-Project-IESCP-main.Adfluence.models.User {
+  campaigns
+  email
+  flagged
+  id
+  influencers
+  name
+  niche
+  password
+  ratings
+  role
+  transactions
+}
+class "UserAPI" as MAD-1-Project-IESCP-main.Adfluence.api.UserAPI {
+  delete(id)
+  get(id)
+  post()
+  put(id)
+}
+class "campaignRequest" as MAD-1-Project-IESCP-main.Adfluence.models.campaignRequest {
+  campaign_id
+  completed
+  completion_confirmed
+  id
+  influencer_id
+  messages
+  payment_amount
+  payment_done
+  rating_done
+  requirements
+  status
+}
+@enduml

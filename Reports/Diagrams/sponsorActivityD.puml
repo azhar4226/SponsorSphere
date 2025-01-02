@@ -1,0 +1,38 @@
+@startuml ActivityDiagramSponsor
+
+start
+
+:Log in to the system;
+
+:Create a new campaign;
+:Define campaign details (name, description, budget, etc.);
+:Set campaign visibility (public/private);
+
+fork
+    :Create ad requests for the campaign;
+    :Define ad request details (requirements, payment amount, etc.);
+fork again
+    :Search for influencers based on criteria;
+    :Review influencer profiles;
+end fork
+
+:Send ad requests to selected influencers;
+
+repeat
+    :Receive responses from influencers;
+    if (Accept ad request?) then (yes)
+        :Accept ad request;
+        :Update campaign status;
+    else (no)
+        :Reject ad request;
+        :Notify influencer of rejection;
+    endif
+repeat while (Ad requests pending?)
+
+:Monitor campaign performance;
+
+:Log out of the system;
+
+stop
+
+@enduml
