@@ -112,18 +112,19 @@ For questions or support, contact:
 
 Azhar Quadri
 Email: [azharquadri4226@gmail.com](azharquadri4226@gmail.com)
-GitHub: azhar4226
+GitHub: [azhar4226](https://github.com/azhar4226)
 
 ---
 
 ## Contributing
 
 We welcome contributions to SponsorSphere! To contribute:
-    1.  Fork the repository.
-    2.  Create a feature branch: git checkout -b feature-name.
-    3.  Commit changes: git commit -m "Add feature-name".
-    4.  Push to your branch: git push origin feature-name.
-    5.  Open a pull request.
+
+   1. Fork the repository.
+   2. Create a feature branch: git checkout -b feature-name.
+   3. Commit changes: git commit -m "Add feature-name".
+   4. Push to your branch: git push origin feature-name.
+   5. Open a pull request.
 
 ---
 
